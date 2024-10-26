@@ -1,0 +1,63 @@
+---
+const contacts = [
+  { icon: "📞", text: "+974 3325 3203", href: "tel:+97433253203" },
+  { icon: "📱", text: "+94 772 049 123", href: "https://wa.me/94772049123" },
+  { icon: "✉️", text: "Email", href: "mailto:info@dotnetevangelist.net" },
+  { icon: "🤵🏻", text: "Portfolio", href: "https://nirzaf.github.io" },
+  { icon: "🐱‍👤", text: "GitHub", href: "https://github.com/nirzaf" },
+  { icon: "💼", text: "LinkedIn", href: "https://linkedin.com/in/mfmfazrin" },
+  { icon: "📝", text: "Blog", href: "https://dotnetevangelist.net" },
+];
+---
+
+<div class="contact-grid">
+  {contacts.map(contact => (
+    <a href={contact.href} class="contact-item">
+      <span class="icon">{contact.icon}</span>
+      <span class="text">{contact.text}</span>
+    </a>
+  ))}
+</div>
+
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: white;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: #4a5568;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .contact-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: #4a90e2;
+    color: white;
+  }
+
+  .icon {
+    font-size: 1.25rem;
+  }
+
+  .text {
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

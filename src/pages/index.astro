@@ -1,0 +1,234 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProfileHeader from '../components/ProfileHeader.astro';
+import ContactGrid from '../components/ContactGrid.astro';
+import TimelineJob from '../components/TimelineJob.astro';
+
+const jobs = [
+  {
+    title: "Software Development Specialist",
+    company: "Primary Health Care Corporation (Qatar)",
+    period: "July 2022 - Present",
+    description: [
+      "Project: Nar'aakom Mobile Application (Backend with Azure Functions with C#)",
+      "Working on backend .NET services to migrate REST API to GraphQL with Azure Active Directory",
+      "Optimizing query performance using Azure Redis distributed caching",
+      "Migrating data from SQL server to FHIR (NoSQL) database",
+      "Developing Open API interface for third-party service integration",
+      "Unit testing and Integration testing with xUnit.net and Moq framework"
+    ],
+    technologies: [".NET 6+", "C# 10+", "Azure Functions", "GraphQL", "Redis", "SQL Server 2022", "Azure DevOps"]
+  },
+  {
+    title: "Senior Full-stack Engineer",
+    company: "Quadrate Tech Solutions Private Limited",
+    period: "July 2020 - June 2022",
+    description: [
+      "Project: Hotel ERP (SaaS-based ERP Solution for hotels)",
+      "Led administration module development for authentication & authorization",
+      "Successfully deployed mail service and SMS gateway using Azure Functions",
+      "Data synchronization between SQL Server and Cosmos Database",
+      "Frontend development using Angular",
+      "Microservices integration using Azure Service Bus & RabbitMQ"
+    ],
+    technologies: [".NET Core 3.1+", "Angular 12", "Azure Functions", "Cosmos DB", "RabbitMQ", "Azure Service Bus"]
+  },
+  {
+    title: "Dot NET Engineer",
+    company: "Voigue Private Limited",
+    period: "Nov 2019 - June 2020",
+    description: [
+      "Project: SmartPABX - Cloud-Based Phone System",
+      ".NET Engineer in WPF-based Project for an Australian Telecommunication Company",
+      "Developed Backend API with .NET Core",
+      "User interface optimization by converting WinForms to WPF",
+      "Implemented dynamic UI functions for call management"
+    ],
+    technologies: [".NET Core 2.1", "WPF", "C# 7", "REST API", "XAML", "MariaDB"]
+  },
+  {
+    title: "Associate Full Stack-Engineer",
+    company: "Virtusa Private Limited",
+    period: "Jan 2019 - Oct 2019",
+    description: [
+      "Project: McDonald's - Workforce Operations Labor Forecasting System",
+      "Developed web application for labor requirement forecasting",
+      "Improved decision-making process from 6 months to 5 minutes",
+      "Maintained 10/10 client scorecards throughout the project",
+      "Implemented new features and optimizations"
+    ],
+    technologies: ["Angular 6", "Bootstrap 4.2", ".NET Core 2.0", "EF Core", "Azure", "SQL Server 2017"]
+  },
+  {
+    title: "Software Developer",
+    company: "Nemico Holdings",
+    period: "Jan 2016 - Dec 2018",
+    description: [
+      "Inventory Management System for fashion retailers",
+      "POS integration for real-time inventory updates",
+      "Implemented cloud-based enterprise inventory management",
+      "Migrated reporting system from Crystal Reports to iTextSharp",
+      "Enhanced system performance and reduced costs"
+    ],
+    technologies: ["ASP.NET 4.8", "C#", "SQL Server", "iTextSharp", "Crystal Reports"]
+  },
+  {
+    title: "Backend Developer",
+    company: "Olayan (Saudi Arabia)",
+    period: "Jun 2012 - Jul 2015",
+    description: [
+      "Centralized online order-taking process",
+      "Improved UX with real-time notifications using SignalR",
+      "Enhanced document viewing with PDF.js implementation",
+      "Reduced response time and eliminated license costs"
+    ],
+    technologies: [".NET Framework 4.0", "SignalR", "ASP.NET Web API", "PDF.js", "SQL Server"]
+  },
+  {
+    title: "Junior Developer",
+    company: "QTS Private Limited",
+    period: "Aug 2009 - Apr 2012",
+    description: [
+      "LECO Energy - Field Report Writer/Total Maintenance Service",
+      "Developed field service information capture system",
+      "Reverse-engineered Office InfoPath 2003 implementation",
+      "Optimized team efficiency and feature implementation"
+    ],
+    technologies: [".NET", "XML", "InfoPath", "SQL Server"]
+  }
+];
+---
+
+<Layout title="M.F.M Fazrin - Software Development Specialist">
+  <main>
+    <ProfileHeader />
+    <ContactGrid />
+    
+    <div class="coffee-button">
+      <a href="https://www.buymeacoffee.com/fazrinphccs" target="_blank">
+        <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" />
+      </a>
+    </div>
+
+    <nav class="experience-nav">
+      <h2>Professional Experience</h2>
+      <div class="timeline-nav">
+        {jobs.map(job => (
+          <a href={`#${job.company.toLowerCase().replace(/\s+/g, '-')}`} class="nav-item">
+            {job.period}
+          </a>
+        ))}
+      </div>
+    </nav>
+
+    <section class="timeline">
+      {jobs.map(job => (
+        <div id={job.company.toLowerCase().replace(/\s+/g, '-')}>
+          <TimelineJob {...job} />
+        </div>
+      ))}
+    </section>
+
+    <section class="education">
+      <h2>Education & Qualifications</h2>
+      <ul>
+        <li>MSc in Software Engineering @ Kingston University</li>
+        <li>BE in Software Engineering @ London Metropolitan University</li>
+        <li>IELTS (Academic) 7.5 Average (May – 2021)</li>
+      </ul>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 2rem;
+    max-width: 1200px;
+    background: #f8fafc;
+  }
+
+  .coffee-button {
+    text-align: center;
+    margin: 2rem 0;
+  }
+
+  .coffee-button img {
+    height: 60px;
+    width: 217px;
+    transition: transform 0.3s ease;
+  }
+
+  .coffee-button img:hover {
+    transform: scale(1.05);
+  }
+
+  .experience-nav {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .timeline-nav {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+  }
+
+  .nav-item {
+    padding: 0.5rem 1rem;
+    background: #edf2f7;
+    border-radius: 2rem;
+    color: #4a5568;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+  }
+
+  .nav-item:hover {
+    background: #4a90e2;
+    color: white;
+  }
+
+  .timeline {
+    position: relative;
+    padding: 2rem 0;
+  }
+
+  h2 {
+    color: #2d3748;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .education {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin-top: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .education ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+  }
+
+  .education li {
+    color: #4a5568;
+    margin-bottom: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    main {
+      padding: 1rem;
+    }
+
+    .timeline-nav {
+      padding: 0.5rem 0;
+    }
+  }
+</style>

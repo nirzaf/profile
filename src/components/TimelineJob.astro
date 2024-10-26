@@ -1,0 +1,109 @@
+---
+interface Props {
+  title: string;
+  company: string;
+  period: string;
+  description: string[];
+  technologies: string[];
+}
+
+const { title, company, period, description, technologies } = Astro.props;
+---
+
+<div class="timeline-item">
+  <div class="timeline-marker"></div>
+  <div class="job-card">
+    <h3>{title}</h3>
+    <p class="company">{company}</p>
+    <p class="period">{period}</p>
+    <ul>
+      {description.map(item => <li>{item}</li>)}
+    </ul>
+    <div class="tech-stack">
+      {technologies.map(tech => <span>{tech}</span>)}
+    </div>
+  </div>
+</div>
+
+<style>
+  .timeline-item {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .timeline-marker {
+    position: absolute;
+    left: -6px;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #4a90e2;
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 3px #4a90e2;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background: #4a90e2;
+  }
+
+  .job-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #4a90e2;
+  }
+
+  h3 {
+    color: #2d3748;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+  }
+
+  .company {
+    color: #4a90e2;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+
+  .period {
+    color: #718096;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  li {
+    color: #4a5568;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .tech-stack span {
+    background: #edf2f7;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    color: #4a5568;
+  }
+</style>
