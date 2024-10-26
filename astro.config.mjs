@@ -1,4 +1,15 @@
 import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+    site: 'https://dotnetevangelist.com/profile',
+    trailingSlash: 'never',
+    markdown: {
+        drafts: true,
+        shikiConfig: {
+            theme: 'material-theme-palenight',
+            wrap: true
+        }
+    },
+    outDir: './dist'
+})
