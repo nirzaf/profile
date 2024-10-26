@@ -3,6 +3,32 @@ import Layout from '../layouts/Layout.astro';
 import ProfileHeader from '../components/ProfileHeader.astro';
 import ContactGrid from '../components/ContactGrid.astro';
 import TimelineJob from '../components/TimelineJob.astro';
+import EducationCard from "../components/EducationCard.astro";
+
+const education = [
+  {
+    institution: "Kingston University",
+    degree: "MSc in Software Engineering",
+    field: "Software Engineering",
+    year: "2021",
+    icon: "🎓" // Graduation cap icon for MSc
+  },
+  {
+    institution: "London Metropolitan University",
+    degree: "BE in Software Engineering",
+    field: "Software Engineering",
+    year: "2019",
+    icon: "🎓" // Graduation cap icon for BE
+  },
+  {
+    institution: "IELTS (Academic)",
+    degree: "7.5 Average",
+    field: "English Proficiency",
+    year: "May 2021",
+    icon: "📜" // Scroll icon for certification
+  }
+];
+
 
 const jobs = [
   {
@@ -131,11 +157,13 @@ const jobs = [
 
     <section class="education">
       <h2>Education & Qualifications</h2>
-      <ul>
-        <li>MSc in Software Engineering @ Kingston University</li>
-        <li>BE in Software Engineering @ London Metropolitan University</li>
-        <li>IELTS (Academic) 7.5 Average (May – 2021)</li>
-      </ul>
+      <div class="education-grid">
+        {education.map((item, index) => (
+            <div data-aos="fade-up" data-aos-delay={index * 100}>
+              <EducationCard {...item} />
+            </div>
+        ))}
+      </div>
     </section>
   </main>
 </Layout>

@@ -1,0 +1,101 @@
+﻿---
+interface Props {
+    degree: string;
+    institution: string;
+    icon: string;
+    year?: string;
+}
+
+const { degree, institution, icon, year } = Astro.props;
+---
+
+<div class="education-card">
+    <div class="icon-wrapper">
+        <span class="icon">{icon}</span>
+    </div>
+    <div class="content">
+        <h3>{degree}</h3>
+        <p class="institution">{institution}</p>
+        {year && <p class="year">{year}</p>}
+    </div>
+</div>
+
+<style>
+    .education-card {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1.5rem;
+        background: white;
+        border-radius: 1rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 2px solid transparent;
+    }
+
+    .education-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 20px rgba(74, 144, 226, 0.1);
+        border-color: #4a90e2;
+    }
+
+    .icon-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 3.5rem;
+        height: 3.5rem;
+        background: #edf2f7;
+        border-radius: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .education-card:hover .icon-wrapper {
+        background: #4a90e2;
+        transform: scale(1.1) rotate(5deg);
+    }
+
+    .icon {
+        font-size: 1.75rem;
+        transition: all 0.3s ease;
+    }
+
+    .education-card:hover .icon {
+        transform: scale(1.1);
+    }
+
+    .content {
+        flex: 1;
+    }
+
+    h3 {
+        color: #2d3748;
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin: 0 0 0.25rem 0;
+    }
+
+    .institution {
+        color: #4a90e2;
+        font-weight: 500;
+        margin: 0 0 0.25rem 0;
+    }
+
+    .year {
+        color: #718096;
+        font-size: 0.875rem;
+        margin: 0;
+    }
+
+    @media (max-width: 640px) {
+        .education-card {
+            flex-direction: column;
+            text-align: center;
+            padding: 1.25rem;
+        }
+
+        .icon-wrapper {
+            margin-bottom: 0.5rem;
+        }
+    }
+</style>
